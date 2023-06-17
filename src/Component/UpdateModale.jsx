@@ -92,7 +92,7 @@ const UpdateModale = ({ onSubmit }) => {
 					></textarea>
 				</div>
 				<div className="form-control mt-6">
-					<button className="btn btn-primary">Add Class</button>
+					<button className="btn btn-primary">Add Toy</button>
 				</div>
 			</form>
 		</div>

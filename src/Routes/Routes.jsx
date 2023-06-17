@@ -70,15 +70,6 @@ const router = createBrowserRouter([
 					</PrivateRoute>
 				),
 			},
-
-			{
-				path: "toyupdate",
-				element: (
-					<PrivateRoute>
-						<MytoyUpdate />
-					</PrivateRoute>
-				),
-			},
 		],
 	},
 ]);
