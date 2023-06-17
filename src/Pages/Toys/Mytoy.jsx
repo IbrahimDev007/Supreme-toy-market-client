@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 
 import Swal from "sweetalert2";
 import useAuthHook from "../../Hook/UseAuthHook";
