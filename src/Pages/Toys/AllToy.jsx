@@ -1,13 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AllToy = () => {
 	// all toy get with react query
 	const { data: toy = [] } = useQuery({
-		queryKey: ["toys", user?.email],
+		queryKey: ["toysk"],
 		queryFn: async () => {
-			const res = await axios.get(`/toys`);
+			const res = await axios.get(`http://localhost:3000/toys`);
+			console.log(res.data);
 			return res.data;
 		},
 	});
@@ -27,7 +29,7 @@ const AllToy = () => {
 							<div className="card-body">
 								<h2 className="card-title">{toy.name}</h2>
 								<p>
-									<span className="font-semibold text-md">Email:</span>
+									<span className="font-semibold text-md">seller_name:</span>
 									{toy.seller_name}
 								</p>
 								<p>
@@ -35,12 +37,16 @@ const AllToy = () => {
 									{toy.seller_email}
 								</p>
 								<p>
-									<span className="font-semibold text-md">Email:</span>
+									<span className="font-semibold text-md">sub_catagory:</span>
 									{toy.sub_category}
+								</p>
+								<p>
+									<span className="font-semibold text-md">rating:</span>
+									{toy.rating}
 								</p>
 
 								<p>
-									<span className="font-semibold text-md">Email:</span>
+									<span className="font-semibold text-md"></span>
 									<Link to={`/toydescriptions/${toy._id}`}>view toydesc </Link>
 								</p>
 							</div>

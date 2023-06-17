@@ -1,10 +1,14 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 	const { data: toy = [] } = useQuery({
-		queryKey: ["toys", user?.email],
+		queryKey: ["toysj"],
 		queryFn: async () => {
-			const res = await axios.get(`/toys`);
+			const res = await axios.get(`http://localhost:3000/toys`);
+
 			return res.data;
 		},
 	});
@@ -13,7 +17,7 @@ const Home = () => {
 			<section>
 				<div
 					className="hero min-h-screen"
-					style={`background-image: url(/images/stock/photo-1507358522600-9f71e620c44e.jpg)`}
+					// style={`background-image: url(/images/stock/photo-1507358522600-9f71e620c44e.jpg)`}
 				>
 					<div className="hero-overlay bg-opacity-60"></div>
 					<div className="hero-content text-center text-neutral-content">

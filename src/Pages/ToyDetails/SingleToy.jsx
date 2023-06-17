@@ -1,8 +1,11 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useParams } from "react-router-dom";
+import useAuthHook from "../../Hook/UseAuthHook";
 
 const SingleToy = () => {
 	const _id = useParams();
+	const user = useAuthHook();
 	const { data: toy = [] } = useQuery({
 		queryKey: ["Toy", user?.email],
 		enabled: !!user?.email && !!localStorage.getItem("access-verify-token"),
