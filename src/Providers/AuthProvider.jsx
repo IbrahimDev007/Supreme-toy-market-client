@@ -58,7 +58,7 @@ const AuthProvider = ({ children }) => {
 			//	get and set token
 			if (currentUser) {
 				axios
-					.post("http://localhost:3000/jwt", {
+					.post("https://y-gamma-woad.vercel.app/jwt", {
 						email: currentUser.email,
 					})
 					.then((data) => {

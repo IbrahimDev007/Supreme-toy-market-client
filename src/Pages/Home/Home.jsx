@@ -7,7 +7,7 @@ const Home = () => {
 	const { data: toy = [] } = useQuery({
 		queryKey: ["toysj"],
 		queryFn: async () => {
-			const res = await axios.get(`http://localhost:3000/toys`);
+			const res = await axios.get(`https://y-gamma-woad.vercel.app/toys`);
 
 			return res.data;
 		},

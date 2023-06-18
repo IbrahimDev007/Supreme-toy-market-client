@@ -5,7 +5,7 @@ import useAuthHook from "./UseAuthHook";
 
 const useAxiosInterceptor = () => {
 	const instanceSecure = axios.create({
-		baseURL: "http://localhost:3000",
+		baseURL: "https://y-gamma-woad.vercel.app",
 	});
 	const { logOut } = useAuthHook();
 	const navigate = useNavigate();

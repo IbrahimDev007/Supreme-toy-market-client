@@ -24,7 +24,7 @@ const SignUp = () => {
 				email: loggedInUser.email,
 				role: "student",
 			};
-			fetch("http://localhost:3000/users", {
+			fetch("https://y-gamma-woad.vercel.app/users", {
 				method: "POST",
 				headers: {
 					"content-type": "application/json",
@@ -46,7 +46,7 @@ const SignUp = () => {
 			updateUserProfile(data.name, data.photoURL)
 				.then(() => {
 					axios
-						.post("http://localhost:3000/users", {
+						.post("https://y-gamma-woad.vercel.app/users", {
 							name: data.name,
 							email: data.email,
 							role: "student",
