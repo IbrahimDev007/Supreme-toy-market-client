@@ -23,7 +23,7 @@ const Login = () => {
 				email: loggedInUser.email,
 				role: "admin",
 			};
-			fetch("http://localhost:3000/users", {
+			fetch("https://y-gamma-woad.vercel.app/users", {
 				method: "POST",
 				headers: {
 					"content-type": "application/json",

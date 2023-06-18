@@ -8,7 +8,8 @@ const AllToy = () => {
 	const { data: toy = [] } = useQuery({
 		queryKey: ["toysk"],
 		queryFn: async () => {
-			const res = await axios.get(`http://localhost:3000/toys`);
+			const res = await axios.get(`
+			https://y-gamma-woad.vercel.app/toys`);
 			console.log(res.data);
 			return res.data;
 		},
