@@ -2,16 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useParams } from "react-router-dom";
 import useAuthHook from "../../Hook/UseAuthHook";
+import useAxiosInterceptor from "../../Hook/UseInstanceSecureHook";
 
 const SingleToy = () => {
 	const _id = useParams();
+	console.log("single toy id", _id);
+	const [instanceSecure] = useAxiosInterceptor();
 	const user = useAuthHook();
 	const { data: toy = [] } = useQuery({
 		queryKey: ["Toy", user?.email],
 		enabled: !!user?.email && !!localStorage.getItem("access-verify-token"),
 		queryFn: async () => {
-			const res = await instanceSecure.get(`/toy/detailsuser?.email/${_id}`);
-			console.log(res.data);
+			const res = await instanceSecure.get(`/toy/details/${_id}`);
+			console.log("single toy data", res.data);
 			return res.data;
 		},
 	});

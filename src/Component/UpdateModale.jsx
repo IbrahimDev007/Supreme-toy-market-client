@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 const UpdateModale = ({ onSubmit }) => {
 	const { register, handleSubmit } = useForm();
 	return (
-		<div modal-box text-center text-yellow-50>
+		<div className="modal-box text-center text-yellow-50">
 			<form method="dialog" className=" text-center  text-yellow-50  ">
 				<button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-white bg-red-400">
 					✕

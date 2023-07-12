@@ -48,7 +48,12 @@ const AllToy = () => {
 
 								<p>
 									<span className="font-semibold text-md"></span>
-									<Link to={`/toydescriptions/${toy._id}`}>view toydesc </Link>
+									<Link
+										to={`/toydescriptions/${toy._id}`}
+										className="text-red-700"
+									>
+										view toydesc
+									</Link>
 								</p>
 							</div>
 						</div>

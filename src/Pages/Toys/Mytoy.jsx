@@ -22,7 +22,7 @@ const Mytoy = () => {
 		enabled: !!user?.email && !!localStorage.getItem("access-verify-token"),
 		queryFn: async () => {
 			const res = await instanceSecure.get(`/mytoy/${user?.email}`);
-			console.log(res.data);
+			console.log("user data= ", res.data);
 			return res.data;
 		},
 	});
@@ -92,8 +92,7 @@ const Mytoy = () => {
 			<div>
 				<div className="overflow-x-auto w-full">
 					<table className="table w-full">
-						{/* head */}
-						<thead className="bg-success text-white">
+						<thead className="text-slate-900 text-sm font-extralight">
 							<tr>
 								<th>#</th>
 								<th>Image</th>
@@ -107,17 +106,13 @@ const Mytoy = () => {
 						</thead>
 						<tbody>
 							{myToys &&
-								myToys.map((toy) => (
+								myToys.map((toy, index) => (
 									<tr key={toy._id}>
 										<td>{index}</td>
 										<td>
 											<div className="avatar">
 												<div className="mask mask-squircle w-12 h-12">
-													<img
-														// src={user.image}
-														src={""}
-														alt="Avatar Tailwind CSS Component"
-													/>
+													<img src={""} alt="Avatar Tailwind CSS Component" />
 												</div>
 											</div>
 										</td>
@@ -130,7 +125,7 @@ const Mytoy = () => {
 											</Link>
 										</td>
 										<td className="text-end">{toy.rating}</td>
-										<td className="text-end ">
+										<td className="text-end">
 											<button
 												onClick={() => handleModale(toy)}
 												className="btn btn-sm btn-warning"
@@ -148,6 +143,7 @@ const Mytoy = () => {
 								))}
 						</tbody>
 					</table>
+
 					<dialog id="my_modal_3" className="modal">
 						<UpdateModale onSubmit={onSubmit} />
 					</dialog>
