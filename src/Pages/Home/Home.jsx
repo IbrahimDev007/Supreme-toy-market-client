@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
+import Slders from "./sliders";
 
 const Home = () => {
 	const { data: toy = [] } = useQuery({
@@ -35,6 +36,9 @@ const Home = () => {
 						</div>
 					</div>
 				</div>
+			</section>
+			<section>
+				<Slders />
 			</section>
 			<section>
 				<div className="grid grid-cols-3 gap-8">
