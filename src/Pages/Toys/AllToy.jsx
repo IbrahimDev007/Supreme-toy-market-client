@@ -10,7 +10,7 @@ const AllToy = () => {
 		queryFn: async () => {
 			const res = await axios.get(`
 			https://y-gamma-woad.vercel.app/toys`);
-			console.log(res.data);
+			// console.log(res.data);
 			return res.data;
 		},
 	});

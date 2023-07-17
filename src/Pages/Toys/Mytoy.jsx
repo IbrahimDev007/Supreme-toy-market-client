@@ -9,26 +9,32 @@ import Swal from "sweetalert2";
 import useAuthHook from "../../Hook/UseAuthHook";
 import useAxiosInterceptor from "../../Hook/UseInstanceSecureHook";
 import UpdateModale from "../../Component/UpdateModale";
+import axios from "axios";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 
 const Mytoy = () => {
-	const [singleToy, setSingleToy] = useState([]);
+	const [singleToy, setSingleToy] = useState(null);
 	const { user, loading, refetch } = useAuthHook();
 	const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 	const [instanceSecure] = useAxiosInterceptor();
 	const { data: myToys = [] } = useQuery({
 		queryKey: ["myToys", user?.email],
 		enabled: !!user?.email && !!localStorage.getItem("access-verify-token"),
+
 		queryFn: async () => {
-			const res = await instanceSecure.get(`/mytoy/${user?.email}`);
-			console.log("user data= ", res.data);
+			// console.log(user.email);
+			const res = await axios.get(
+				`https://y-gamma-woad.vercel.app/mytoy/${user?.email}`
+			);
+			// console.log(res.data);
 			return res.data;
 		},
 	});
+	console.log(singleToy);
+	// console.log(data);
 	const handleModale = (item) => {
 		setSingleToy(item);
-		window.my_modal_3.showModal();
 	};
 	const onSubmit = (data) => {
 		const { _id } = singleToy;
@@ -60,10 +66,12 @@ const Mytoy = () => {
 						sub_category,
 					};
 					console.log(newItem);
-					instanceSecure.patch(`/toys/${_id}`, newItem).then((data) => {
-						reset();
-						refetch();
-					});
+					axios
+						.patch(`https://y-gamma-woad.vercel.app/toys/${_id}`, newItem)
+						.then((data) => {
+							reset();
+							refetch();
+						});
 				}
 			});
 	};
@@ -78,12 +86,14 @@ const Mytoy = () => {
 			confirmButtonText: "Yes, delete it!",
 		}).then((result) => {
 			if (result.isConfirmed) {
-				instanceSecure.delete(`toys/${_id}`).then((res) => {
-					if (res.data.deletedCount > 0) {
-						refetch();
-						Swal.fire("Deleted!", "Your file has been deleted.", "success");
-					}
-				});
+				axios
+					.delete(`https://y-gamma-woad.vercel.app/toys/${_id}`)
+					.then((res) => {
+						if (res.data.deletedCount > 0) {
+							refetch();
+							Swal.fire("Deleted!", "Your file has been deleted.", "success");
+						}
+					});
 			}
 		});
 	};
@@ -120,18 +130,20 @@ const Mytoy = () => {
 										<td className="text-end">${toy.sub_category}</td>
 										<td className="text-end">{toy.price}</td>
 										<td className="text-end">
-											<Link to={`toydescriptions/${toy._id}`}>
+											<Link to={`/toydescriptions/${toy._id}`}>
 												View Details
 											</Link>
 										</td>
 										<td className="text-end">{toy.rating}</td>
 										<td className="text-end">
-											<button
-												onClick={() => handleModale(toy)}
+											<label
+												htmlFor="my-modal"
 												className="btn btn-sm btn-warning"
+												onClick={() => handleModale(toy)}
 											>
-												Update
-											</button>
+												update
+											</label>
+
 											<button
 												onClick={() => handleDelete(toy._id)}
 												className="btn btn-sm btn-danger"
@@ -143,10 +155,9 @@ const Mytoy = () => {
 								))}
 						</tbody>
 					</table>
-
-					<dialog id="my_modal_3" className="modal">
-						<UpdateModale onSubmit={onSubmit} />
-					</dialog>
+					{/* The button to open modal */}
+					{/* Put this part before </body> tag */}
+					<UpdateModale onSubmit={onSubmit} />
 				</div>
 			</div>
 		</div>

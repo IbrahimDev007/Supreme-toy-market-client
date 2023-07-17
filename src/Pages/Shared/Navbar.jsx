@@ -29,7 +29,7 @@ const Navbar = () => {
 						</button>
 					</li>
 
-					<li>{user && <Link to="/dashboard">User Dashboard</Link>}</li>
+					<li>{user && <Link to="/dashboard/addtoy">User Dashboard</Link>}</li>
 				</>
 			) : (
 				<>

@@ -75,3 +75,5 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
+
+// vercel url  :https://y-gamma-woad.vercel.app

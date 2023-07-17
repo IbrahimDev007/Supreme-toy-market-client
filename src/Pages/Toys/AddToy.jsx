@@ -2,9 +2,9 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import useAxiosInterceptor from "../../Hook/UseInstanceSecureHook";
 import useAuthHook from "../../Hook/UseAuthHook";
-
+import axios from "axios";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
-
+console.log(img_hosting_token);
 const AddToy = () => {
 	const [instanceSecure] = useAxiosInterceptor();
 	const { register, handleSubmit, reset } = useForm();
@@ -42,19 +42,21 @@ const AddToy = () => {
 						seller_email: user.email,
 					};
 					console.log(newItem);
-					instanceSecure.post("/toys", newItem).then((data) => {
-						console.log("after posting new class item", data.data);
-						if (data.data.insertedId) {
-							reset();
-							Swal.fire({
-								position: "top-end",
-								icon: "success",
-								title: "class added successfully",
-								showConfirmButton: false,
-								timer: 1500,
-							});
-						}
-					});
+					axios
+						.post("https://y-gamma-woad.vercel.app/toys", newItem)
+						.then((data) => {
+							console.log("after posting new class item", data.data);
+							if (data.data.insertedId) {
+								reset();
+								Swal.fire({
+									position: "top-end",
+									icon: "success",
+									title: "class added successfully",
+									showConfirmButton: false,
+									timer: 1500,
+								});
+							}
+						});
 				}
 			});
 	};

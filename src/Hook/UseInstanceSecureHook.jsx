@@ -5,13 +5,11 @@ import useAuthHook from "./UseAuthHook";
 
 const useAxiosInterceptor = () => {
 	const instanceSecure = axios.create({
-		baseURL: "https://y-gamma-woad.vercel.app",
+		baseURL: "https://localhost:3000",
 	});
 	const { logOut } = useAuthHook();
 	const navigate = useNavigate();
 	useEffect(() => {
-		// Create an instance of Axios with the desired configuration
-
 		// Add a request interceptor
 		instanceSecure.interceptors.request.use((config) => {
 			const token = localStorage.getItem("access-verify-token");
