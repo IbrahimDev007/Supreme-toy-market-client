@@ -15,7 +15,9 @@ const SingleToy = () => {
 		queryKey: ["Toy", user?.email],
 		// enabled: !!user?.email,
 		queryFn: async () => {
-			const res = await axios.get(`http://localhost:3000/toy/details/${id}`);
+			const res = await axios.get(
+				`https://y-gamma-woad.vercel.app/toy/details/${id}`
+			);
 			console.log(res.data);
 			return res.data;
 		},

@@ -4,7 +4,7 @@ const UpdateModale = ({ onSubmit }) => {
 	const { register, handleSubmit } = useForm();
 	return (
 		<div>
-			<input type="checkbox" id="my-modal" className="modal-toggle" />;
+			<input type="checkbox" id="my-modal" className="modal-toggle" />
 			<div className="modal">
 				<div className="modal-box">
 					<form

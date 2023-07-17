@@ -20,7 +20,10 @@ const AllToy = () => {
 			<div className="flex justify-center py-16">
 				<div className="grid grid-cols-3 gap-8">
 					{toy.map((toy) => (
-						<div className="card w-48 bg-base-100 shadow-xl" key={toy._id}>
+						<div
+							className="card w-5/6 bg-base-100 shadow-xl mb-2"
+							key={toy._id}
+						>
 							<figure>
 								<img
 									src="https://images.unsplash.com/photo-1530325553241-4f6e7690cf36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG95fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
