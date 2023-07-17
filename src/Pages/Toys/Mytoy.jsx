@@ -18,9 +18,10 @@ const Mytoy = () => {
 	const [singleToy, setSingleToy] = useState(null);
 	const { user } = useAuthHook();
 	const { loading, refetch } = useToy();
+	console.log(refetch);
 	const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 	const [instanceSecure] = useAxiosInterceptor();
-	const { data: myToys = [] } = useQuery({
+	const { data: myToys = [], refetch: reloadData } = useQuery({
 		queryKey: ["myToys", user?.email],
 		enabled: !!user?.email && !!localStorage.getItem("access-verify-token"),
 
@@ -73,6 +74,7 @@ const Mytoy = () => {
 						.then((data) => {
 							reset();
 							refetch();
+							reloadData();
 						});
 				}
 			});
@@ -93,6 +95,7 @@ const Mytoy = () => {
 					.then((res) => {
 						if (res.data.deletedCount > 0) {
 							refetch();
+							reloadData();
 							Swal.fire("Deleted!", "Your file has been deleted.", "success");
 						}
 					});

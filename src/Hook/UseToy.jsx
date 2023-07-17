@@ -13,7 +13,7 @@ const useToy = () => {
 		},
 	});
 
-	return [toy, loading, refetch];
+	return { toy, loading, refetch };
 };
 
 export default useToy;

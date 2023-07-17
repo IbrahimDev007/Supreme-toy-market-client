@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuthHook from "../../Hook/UseAuthHook";
 
@@ -9,11 +9,14 @@ const Login = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const { signIn, googleSignIn } = useAuthHook();
+	const { signIn, googleSignIn, user } = useAuthHook();
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	const from = location.state?.from?.pathname || "/";
+	if (user?.uid) {
+		return <Navigate to={from} />;
+	}
 	const handle_google = () => {
 		googleSignIn().then((result) => {
 			const loggedInUser = result.user;
