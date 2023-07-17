@@ -122,7 +122,10 @@ const Mytoy = () => {
 										<td>
 											<div className="avatar">
 												<div className="mask mask-squircle w-12 h-12">
-													<img src={""} alt="Avatar Tailwind CSS Component" />
+													<img
+														src={toy.picture_url}
+														alt="Avatar Tailwind CSS Component"
+													/>
 												</div>
 											</div>
 										</td>

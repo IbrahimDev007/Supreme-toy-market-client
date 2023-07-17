@@ -25,10 +25,7 @@ const AllToy = () => {
 							key={toy._id}
 						>
 							<figure>
-								<img
-									src="https://images.unsplash.com/photo-1530325553241-4f6e7690cf36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dG95fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-									alt="Shoes"
-								/>
+								<img src={toy.picture_url} alt="Shoes" />
 							</figure>
 							<div className="card-body">
 								<h2 className="card-title">{toy.name}</h2>
