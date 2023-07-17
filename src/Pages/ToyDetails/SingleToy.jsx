@@ -10,14 +10,17 @@ const SingleToy = () => {
 
 	console.log("single toy id", typeof id, id);
 	const [instanceSecure] = useAxiosInterceptor();
-	const user = useAuthHook();
+	const { user } = useAuthHook();
+	const token = localStorage.getItem("access-verify-token");
+	console.log(token, user?.email);
 	const { data: toy = [] } = useQuery({
-		queryKey: ["Toy", user?.email],
-		// enabled: !!user?.email,
+		queryKey: ["Toy", user?.email, token],
+		enabled: !!user?.email,
 		queryFn: async () => {
-			const res = await axios.get(
-				`https://y-gamma-woad.vercel.app/toy/details/${id}`
-			);
+			if (!user?.email || !token) {
+				return [];
+			}
+			const res = await instanceSecure.get(`/toy/details/${id}`);
 			console.log(res.data);
 			return res.data;
 		},

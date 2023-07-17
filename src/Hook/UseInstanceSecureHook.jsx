@@ -5,7 +5,7 @@ import useAuthHook from "./UseAuthHook";
 
 const useAxiosInterceptor = () => {
 	const instanceSecure = axios.create({
-		baseURL: "https://localhost:3000",
+		baseURL: "http://localhost:3000",
 	});
 	const { logOut } = useAuthHook();
 	const navigate = useNavigate();
