@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
-// import axios from "axios";
 import { useState } from "react";
 
 import Swal from "sweetalert2";
@@ -10,12 +10,14 @@ import useAuthHook from "../../Hook/UseAuthHook";
 import useAxiosInterceptor from "../../Hook/UseInstanceSecureHook";
 import UpdateModale from "../../Component/UpdateModale";
 import axios from "axios";
+import useToy from "../../Hook/UseToy";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 
 const Mytoy = () => {
 	const [singleToy, setSingleToy] = useState(null);
-	const { user, loading, refetch } = useAuthHook();
+	const { user } = useAuthHook();
+	const { loading, refetch } = useToy();
 	const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 	const [instanceSecure] = useAxiosInterceptor();
 	const { data: myToys = [] } = useQuery({

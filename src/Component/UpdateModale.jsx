@@ -89,12 +89,12 @@ const UpdateModale = ({ onSubmit }) => {
 							></textarea>
 						</div>
 						<div className="form-control mt-6">
-							<button className="btn btn-primary">Add Toy</button>
+							<button className="btn btn-primary">Update Toy</button>
 						</div>
 					</form>
 					<div className="modal-action">
 						<label htmlFor="my-modal" className="btn">
-							Yay!
+							close!
 						</label>
 					</div>
 				</div>
