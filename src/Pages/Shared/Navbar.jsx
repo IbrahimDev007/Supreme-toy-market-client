@@ -19,6 +19,9 @@ const Navbar = () => {
 				<Link to="/alltoys">all toy</Link>
 			</li>
 			<li>
+				<Link to="/blog">Blog</Link>
+			</li>
+			<li>
 				<Link to="/signup">Register</Link>
 			</li>
 			{user ? (
