@@ -1,7 +1,11 @@
+import { useState } from "react";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
+// import Slider2 from "./Slider2";
 import Slders from "./sliders";
 
 const Home = () => {
@@ -13,6 +17,72 @@ const Home = () => {
 			return res.data;
 		},
 	});
+	const [selectedSubCategory, setSelectedSubCategory] =
+		useState("Building Sets");
+
+	const handleSubCategoryChange = (e) => {
+		setSelectedSubCategory(e.target.value);
+	};
+	const subCategories = [
+		...new Set(toy.map((product) => product.sub_category)),
+	];
+	const selectedTabIndex = subCategories.findIndex(
+		(subCategory) => subCategory === selectedSubCategory
+	);
+
+	const handleTabSelect = (index) => {
+		setSelectedSubCategory(subCategories[index]);
+	};
+
+	const filteredProducts = toy.filter(
+		(product) => product.sub_category === selectedSubCategory
+	);
+	const tabItems = subCategories.map((subCategory, index) => (
+		<Tab key={index}>{subCategory}</Tab>
+	));
+
+	const panelItems = subCategories.map((subCategory) => (
+		<TabPanel key={subCategory}>
+			<div className="grid grid-cols-3 gap-3">
+				{filteredProducts.map((toy) => (
+					<div className="card w-64  bg-base-100 shadow-xl my-4" key={toy._id}>
+						<figure>
+							<img
+								src={toy.picture_url}
+								className="object-cover h-48"
+								alt="Shoes"
+							/>
+						</figure>
+						<div className="card-body">
+							<h2 className="card-title">{toy.name}</h2>
+							<p>
+								<span className="font-semibold text-md">Seller:</span>
+								{toy.seller_name}
+							</p>
+							<p>
+								<span className="font-semibold text-md">Email:</span>
+								{toy.seller_email}
+							</p>
+							<p>
+								<span className="font-semibold text-md">Sub-Catagory:</span>
+								{toy.sub_category}
+							</p>
+
+							<p>
+								<span className="font-semibold text-md">Details:</span>
+								<Link
+									to={`/toydescriptions/${toy._id}`}
+									className="text-accent text-base m-2"
+								>
+									Toy Description{" "}
+								</Link>
+							</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</TabPanel>
+	));
 
 	return (
 		<div>
@@ -41,9 +111,10 @@ const Home = () => {
 			<section>
 				<Slders />
 			</section>
+
 			<section>
-				<div className="grid grid-cols-3 gap-8">
-					{toy.map((toy) => (
+				{/* <div className="grid grid-cols-3 gap-8"> */}
+				{/* {toy.map((toy) => (
 						<div
 							className="card w-5/6 bg-base-100 shadow-xl my-10"
 							key={toy._id}
@@ -77,7 +148,24 @@ const Home = () => {
 								</p>
 							</div>
 						</div>
-					))}
+					))} */}
+				{/* </div> */}
+				<div>
+					<select
+						value={selectedSubCategory}
+						onChange={handleSubCategoryChange}
+					>
+						{subCategories.map((subCategory) => (
+							<option key={subCategory} value={subCategory}>
+								{subCategory}
+							</option>
+						))}
+					</select>
+
+					<Tabs selectedIndex={selectedTabIndex} onSelect={handleTabSelect}>
+						<TabList>{tabItems}</TabList>
+						{panelItems}
+					</Tabs>
 				</div>
 			</section>
 		</div>

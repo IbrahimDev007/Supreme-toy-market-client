@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
+// import { Pagination } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 
 import slide1 from "../../assets/slide1.jpg";
 import slide2 from "../../assets/slide2.jpg";
@@ -20,7 +21,7 @@ const Slders = () => {
 					clickable: true,
 				}}
 				modules={[Pagination]}
-				className="mySwiper mb-24"
+				className="mySwiper mb-24  "
 			>
 				<SwiperSlide>
 					<img src={slide1} alt="" />
