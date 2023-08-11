@@ -1,67 +1,94 @@
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import { Link } from "react-router-dom";
 
-const AllToy = () => {
-	// all toy get with react query
-	const { data: toy = [] } = useQuery({
+const AllToys = () => {
+	const { data: toys = [] } = useQuery({
 		queryKey: ["toysk"],
 		queryFn: async () => {
-			const res = await axios.get(`
-			https://y-gamma-woad.vercel.app/toys`);
-			// console.log(res.data);
+			const res = await axios.get("https://y-gamma-woad.vercel.app/toys");
 			return res.data;
 		},
 	});
 
-	return (
-		<div>
-			<div className="flex justify-center py-16">
-				<div className="grid grid-cols-3 gap-8">
-					{toy.map((toy) => (
-						<div
-							className="card w-5/6 bg-base-100 shadow-xl mb-2"
-							key={toy._id}
-						>
-							<figure>
-								<img src={toy.picture_url} alt="Shoes" />
-							</figure>
-							<div className="card-body">
-								<h2 className="card-title">{toy.name}</h2>
-								<p>
-									<span className="font-semibold text-md">seller_name:</span>
-									{toy.seller_name}
-								</p>
-								<p>
-									<span className="font-semibold text-md">Email:</span>
-									{toy.seller_email}
-								</p>
-								<p>
-									<span className="font-semibold text-md">sub_catagory:</span>
-									{toy.sub_category}
-								</p>
-								<p>
-									<span className="font-semibold text-md">rating:</span>
-									{toy.rating}
-								</p>
+	const [searchQuery, setSearchQuery] = useState("");
+	const filteredToys = toys.filter((toy) =>
+		toy.name.toLowerCase().includes(searchQuery.toLowerCase())
+	);
 
-								<p>
-									<span className="font-semibold text-md"></span>
-									<Link
-										to={`/toydescriptions/${toy._id}`}
-										className="text-red-700"
-									>
-										view toydesc
-									</Link>
-								</p>
-							</div>
-						</div>
-					))}
-				</div>
+	const handleSearchChange = (event) => {
+		setSearchQuery(event.target.value);
+	};
+
+	return (
+		<div className="flex  flex-col justify-center">
+			<div className="my-4">
+				<input
+					type="text"
+					placeholder="Search toys..."
+					value={searchQuery}
+					onChange={handleSearchChange}
+					className="border border-gray-300 px-4 py-2 rounded-md  h-12 w-48 mx-auto  flex justify-center"
+				/>
 			</div>
+			<table className="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Seller</th>
+						<th>Sub-category</th>
+						<th>Price</th>
+						<th>Available Quantity</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{filteredToys.map((toy) => (
+						<tr key={toy._id}>
+							<td>
+								<div className="flex items-center space-x-3">
+									<div className="avatar">
+										<div className="mask mask-squircle w-12 h-12">
+											<img src={toy.picture_url} alt={toy.name} />
+										</div>
+									</div>
+									<div>
+										<div className="font-bold">{toy.name}</div>
+										<div className="text-sm opacity-50">
+											{toy.seller_name || "Unknown Seller"}
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>{toy.seller_name || "Unknown Seller"}</td>
+							<td>{toy.sub_category}</td>
+							<td>{toy.price}</td>
+							<td>{toy.available_quantity}</td>
+							<td>
+								<Link
+									to={`/toydescriptions/${toy._id}`}
+									className="text-red-700"
+								>
+									View Description
+								</Link>
+							</td>
+						</tr>
+					))}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>Name</th>
+						<th>Seller</th>
+						<th>Sub-category</th>
+						<th>Price</th>
+						<th>Available Quantity</th>
+						<th></th>
+					</tr>
+				</tfoot>
+			</table>
 		</div>
 	);
 };
 
-export default AllToy;
+export default AllToys;
