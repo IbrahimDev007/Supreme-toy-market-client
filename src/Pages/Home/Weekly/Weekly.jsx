@@ -5,7 +5,7 @@ const Weekly = () => {
 		<div className="2xl:mx-auto 2xl:container 2xl:px-20 xl:px-12 sm:px-6 px-4 py-16">
 			<div className="md:flex items-start justify-between mt-12">
 				{Weeklyes.map((weekly, idx) => (
-					<div className=" mx-2 md:w-1/2 lg:w-full" key={idx}>
+					<div className=" mx-2 md:w-2/2 lg:w-full" key={idx}>
 						<div>
 							<div className="relative">
 								<img src={weekly.image} alt={weekly.name} />

@@ -50,4 +50,33 @@ export const Weeklyes = [
 
 
 
+export const latest = [
+    {
+        "title": "New Arrivals",
+        "date": "2023-09-04",
+        "image": "news1.jpg",
+        "description": "Check out our latest toy arrivals, including the all-new Super Hero Action Figures."
+    },
+    {
+        "title": "Toy Safety Awareness",
+        "date": "2023-08-28",
+        "image": "news2.jpg",
+        "description": "Our commitment to safety standards and child-friendly materials."
+    },
+    {
+        "title": "Toy Fair Recap",
+        "date": "2023-08-20",
+        "image": "news3.jpg",
+        "description": "Highlights from the recent Toy Fair showcasing upcoming toy trends."
+    },
+    {
+        "title": "Customer Spotlight",
+        "date": "2023-08-15",
+        "image": "news4.jpg",
+        "description": "Meet Sarah, our young toy enthusiast of the month."
+    }
+]
+
+
+
 

@@ -11,6 +11,7 @@ import Service from "./service/Service";
 import Contact from "./Contact/Contact";
 import Review from "./Review/Review";
 import Weekly from "./Weekly/Weekly";
+import Latest from "./Latest/Latest";
 
 const Home = () => {
 	const { data: toy = [] } = useQuery({
@@ -142,6 +143,9 @@ const Home = () => {
 			</section>
 			<section>
 				<Weekly />
+			</section>
+			<section>
+				<Latest />
 			</section>
 			<section>
 				<Contact />
