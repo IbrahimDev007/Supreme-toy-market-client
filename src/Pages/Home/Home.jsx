@@ -10,6 +10,7 @@ import Slders from "./sliders";
 import Service from "./service/Service";
 import Contact from "./Contact/Contact";
 import Review from "./Review/Review";
+import Weekly from "./Weekly/Weekly";
 
 const Home = () => {
 	const { data: toy = [] } = useQuery({
@@ -139,7 +140,9 @@ const Home = () => {
 			<section>
 				<Review />
 			</section>
-
+			<section>
+				<Weekly />
+			</section>
 			<section>
 				<Contact />
 			</section>
