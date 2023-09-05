@@ -3,10 +3,13 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+
 import { Link } from "react-router-dom";
 // import Slider2 from "./Slider2";
 import Slders from "./sliders";
+import Service from "./service/Service";
+import Contact from "./Contact/Contact";
+import Review from "./Review/Review";
 
 const Home = () => {
 	const { data: toy = [] } = useQuery({
@@ -111,45 +114,10 @@ const Home = () => {
 			<section>
 				<Slders />
 			</section>
-
 			<section>
-				{/* <div className="grid grid-cols-3 gap-8"> */}
-				{/* {toy.map((toy) => (
-						<div
-							className="card w-5/6 bg-base-100 shadow-xl my-10"
-							key={toy._id}
-						>
-							<figure>
-								<img src={toy.picture_url} alt="Shoes" />
-							</figure>
-							<div className="card-body">
-								<h2 className="card-title">{toy.name}</h2>
-								<p>
-									<span className="font-semibold text-md">Seller:</span>
-									{toy.seller_name}
-								</p>
-								<p>
-									<span className="font-semibold text-md">Email:</span>
-									{toy.seller_email}
-								</p>
-								<p>
-									<span className="font-semibold text-md">Sub-Catagory:</span>
-									{toy.sub_category}
-								</p>
-
-								<p>
-									<span className="font-semibold text-md">Details:</span>
-									<Link
-										to={`/toydescriptions/${toy._id}`}
-										className="text-accent text-base m-2"
-									>
-										Toy Description{" "}
-									</Link>
-								</p>
-							</div>
-						</div>
-					))} */}
-				{/* </div> */}
+				<Service />
+			</section>
+			<section>
 				<div>
 					<select
 						value={selectedSubCategory}
@@ -167,6 +135,13 @@ const Home = () => {
 						{panelItems}
 					</Tabs>
 				</div>
+			</section>
+			<section>
+				<Review />
+			</section>
+
+			<section>
+				<Contact />
 			</section>
 		</div>
 	);
