@@ -11,7 +11,7 @@ const Service = () => {
 						/>
 					</div>
 					<div className="w-full md:w-1/2 px-4">
-						<div className="max-w-lg mx-auto">
+						<div className=" mx-auto">
 							<h2 className="text-3xl font-semibold mb-4 absolute text-violet-700 top-7 left-[9.4cm] ">
 								We provide & offer premium <br />
 								service

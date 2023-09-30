@@ -116,9 +116,7 @@ const Home = () => {
 			<section>
 				<Slders />
 			</section>
-			<section>
-				<Service />
-			</section>
+			<section>{/* <Service /> */}</section>
 			<section>
 				<div>
 					<select
@@ -139,12 +137,19 @@ const Home = () => {
 				</div>
 			</section>
 			<section>
+				<h1 className="text-5xl font-semibold text-black mx-auto">Review</h1>
 				<Review />
 			</section>
 			<section>
+				<h1 className="text-5xl font-semibold text-black mx-auto">
+					Weekly Hot
+				</h1>
 				<Weekly />
 			</section>
 			<section>
+				<h1 className="text-5xl font-semibold text-black mx-auto">
+					Latest Blog
+				</h1>
 				<Latest />
 			</section>
 			<section>

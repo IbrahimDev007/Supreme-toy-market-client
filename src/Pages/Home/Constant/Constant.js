@@ -24,25 +24,25 @@ export const reviews = [
 export const Weeklyes = [
     {
         "name": "Toy of the Week",
-        "image": "toy_of_the_week.jpg",
+        "image": "https://img.freepik.com/free-vector/font-design-word-toy-shop-with-many-toys-white-background_1308-42186.jpg?size=626&ext=jpg",
         "title": "Introducing the Turbo Racer Car",
         "description": "Experience the speed and thrill of the Turbo Racer Car - our top pick this week!"
     },
     {
         "name": "Sales Event",
-        "image": "sales_event.jpg",
+        "image": "https://img.freepik.com/free-psd/baby-shower-celebration-square-flyer-template_23-2150284143.jpg?size=338&ext=jpg",
         "title": "Summer Clearance Sale",
         "description": "Shop now and enjoy massive discounts on summer-themed toys before they're gone!"
     },
     {
         "name": "DIY Toy Workshop",
-        "image": "diy_toy_workshop.jpg",
+        "image": "https://img.freepik.com/free-photo/family-craft_1098-15486.jpg?size=626&ext=jpg",
         "title": "Join Our DIY Toy Workshop",
         "description": "Learn to create your own toys in our fun and educational workshop this weekend."
     },
     {
         "name": "Toy Collector's Club",
-        "image": "toy_collectors_club.jpg",
+        "image": "https://img.freepik.com/free-vector/shelf-box-full-toys-white-background_1308-68374.jpg?size=626&ext=jpgg",
         "title": "Join Our Toy Collector's Club",
         "description": "Connect with fellow collectors and share your passion for rare and vintage toys."
     }
@@ -54,25 +54,25 @@ export const latest = [
     {
         "title": "New Arrivals",
         "date": "2023-09-04",
-        "image": "news1.jpg",
+        "image": "https://img.freepik.com/free-vector/modern-new-arrival-composition-with-realistic-design_23-2147884714.jpg?size=338&ext=jpg",
         "description": "Check out our latest toy arrivals, including the all-new Super Hero Action Figures."
     },
     {
         "title": "Toy Safety Awareness",
         "date": "2023-08-28",
-        "image": "news2.jpg",
+        "image": "https://img.freepik.com/free-photo/top-view-childhood-cancer-awareness-month-background-concepttoys_23-2149499366.jpg?size=626&ext=jpg",
         "description": "Our commitment to safety standards and child-friendly materials."
     },
     {
         "title": "Toy Fair Recap",
         "date": "2023-08-20",
-        "image": "news3.jpg",
+        "image": "https://img.freepik.com/free-photo/grappling-arcade-machine-with-stuffed-toys_23-2148253108.jpg?size=626&ext=jpg",
         "description": "Highlights from the recent Toy Fair showcasing upcoming toy trends."
     },
     {
         "title": "Customer Spotlight",
         "date": "2023-08-15",
-        "image": "news4.jpg",
+        "image": "https://img.freepik.com/free-photo/customer-experience-creative-collage_23-2149346504.jpg?size=626&ext=jpg",
         "description": "Meet Sarah, our young toy enthusiast of the month."
     }
 ]
